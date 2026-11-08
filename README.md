@@ -9,29 +9,7 @@ Desvantagens: Download de arquivos pesados, e indexação de SEO ruim.
 
 Usos: Sistemas administrativos, dashboard, intranet.
 
-
-'''html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>CSR Example</title>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const contentDiv = document.getElementById('content');
-      // Simula uma requisição para obter dados
-      setTimeout(() => {
-        contentDiv.innerHTML = '<h1>Olá, mundo!</h1><p>Este conteúdo foi carregado via CSR.</p>';
-      }, 1000);
-    });
-  </script>
-</head>
-<body>
-  <div id="content">Carregando...</div>
-</body>
-</html>
-'''
-
+![CSR - Client side render code](./assets/csr.png)
 
 
 ## SPA - Single Page Application
@@ -44,41 +22,7 @@ Desvantagens: Download de arquivos pesados, e indexação de SEO ruim.
 Usos: Sistemas administrativos, dashboard, intranet.
 
 
-'''html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>SPA Example</title>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const contentDiv = document.getElementById('content');
-      document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', event => {
-          event.preventDefault();
-          const page = event.target.getAttribute('href').substring(1);
-          loadPage(page);
-        });
-      });
-      function loadPage(page) {
-        contentDiv.innerHTML = `<h1>${page}</h1><p>Conteúdo da página ${page}.</p>`;
-      }
-    });
-  </script>
-</head>
-<body>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div id="content">
-    <h1>Home</h1>
-    <p>Conteúdo da página Home.</p>
-  </div>
-</body>
-</html>
-'''
+![SPA - Single Page Application code](./assets/spa.png)
 
 
 ## SSR - Server Side Rendering
@@ -88,31 +32,7 @@ Vantagem: Muito bom para SEO, e deixa o navegador com menos responsabilidades.
 
 Desvantagem: Exige muito do servidor, aumentando o custo com servidores, e se executar queries em banco existe a possibilidade de lentidão.
 
-'''javascript
-// server.js
-const express = require("express");
-const app = express();
-
-app.get("/", (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>SSR Example</title>
-    </head>
-    <body>
-      <h1>Olá, mundo!</h1>
-      <p>Este conteúdo foi renderizado no servidor.</p>
-    </body>
-    </html>
-  `);
-});
-
-app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000");
-});
-'''
+![SSR - Server Side Rendering code](./assets/ssr.png)
 
 ** os métodos de renderização que são executados no server side usam: getServerSideProps
 
@@ -123,27 +43,7 @@ Vantagem: Excelente para SEO, simplicidade em desenvolver e servir.
 
 Desvantagem: Manutenção comprometida em caso de muitas atualizações.
 
-'''javascript
-// pages/index.js
-export default function Home({ content }) {
-  return (
-    <div>
-      <h1>Olá, mundo!</h1>
-      <p>{content}</p>
-    </div>
-  );
-}
-
-export async function getStaticProps() {
-  // Simula uma requisição de dados
-  const content = "Este conteúdo foi gerado estaticamente.";
-  return {
-    props: {
-      content,
-    },
-  };
-}
-'''
+![SSG - Static Site Generation](./assets/ssg.png)
 
 ** os métodos de renderização que são STATIC usam: getStaticProps
 
@@ -155,28 +55,7 @@ Vantagem: Excelente para SEO, e atualizaçào fácil.
 
 Desvantagem: Precisa saber se o servidor suporta o recurso do revalidate.
 
-'''javascript
-// pages/index.js
-export default function Home({ content }) {
-  return (
-    <div>
-      <h1>Olá, mundo!</h1>
-      <p>{content}</p>
-    </div>
-  );
-}
-
-export async function getStaticProps() {
-  // Simula uma requisição de dados
-  const content = "Este conteúdo foi gerado estaticamente e pode ser atualizado.";
-  return {
-    props: {
-      content,
-    },
-    revalidate: 10, // Regerar a página a cada 10 segundos
-  };
-}
-'''
+![ISR - Incremental Static Regeneration](./assets/isr.png)
 
 ** os métodos de renderização que são STATIC usam: getStaticProps
 

@@ -10,7 +10,7 @@ Desvantagens: Download de arquivos pesados, e indexação de SEO ruim.
 Usos: Sistemas administrativos, dashboard, intranet.
 
 
-'''javascript
+'''html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +44,7 @@ Desvantagens: Download de arquivos pesados, e indexação de SEO ruim.
 Usos: Sistemas administrativos, dashboard, intranet.
 
 
-'''javascript
+'''html
 <!DOCTYPE html>
 <html lang="en">
 <head>
